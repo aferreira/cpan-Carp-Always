@@ -121,6 +121,14 @@ L<Carp>
 
 L<Acme::JavaTrace> and L<Devel::SimpleTrace>
 
+=item *
+
+L<Carp::Always::Color>
+
+=item *
+
+L<Carp::Source::Always>
+
 =back
 
 Please report bugs via CPAN RT 
