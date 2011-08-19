@@ -1,0 +1,19 @@
+--- #YAML:1.0
+name:                Carp-Always
+version:             0.09
+abstract:            Warns and dies noisily with stack backtraces
+license:             perl
+generated_by:        ExtUtils::MakeMaker version 6.36
+distribution_type:   module
+requires:     
+    Carp:                          0
+    Test::More:                    0
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
+    version: 1.2
+author:
+    - Adriano R. Ferreira <ferreira@cpan.org>
+recommends:
+    Test::Pod:                     1.18
+    Test::Pod::Coverage:           1.04
+    Test::Base:                    0
