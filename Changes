@@ -2,6 +2,9 @@ Revision history for Perl extension Carp::Always.
 
     $Id: Changes 1480 2007-07-30 14:35:04Z me $
 
+0.10  xxx
+        - fix typo in POD RT#68793 (also reported by Kai Moonbourn)
+
 0.09  Mon Jul 30 2007
         - no need for updating
         - lib/Carp/Indeed.pm was moved to the deprecate

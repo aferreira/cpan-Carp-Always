@@ -85,7 +85,7 @@ emit the stack backtraces.
 
 Oh, by the way, C<carp> and C<croak> when requiring/using
 the C<Carp> module are also made verbose, behaving
-like C<cloak> and C<confess>, respectively.
+like C<cluck> and C<confess>, respectively.
 
 =head2 EXPORT
 
