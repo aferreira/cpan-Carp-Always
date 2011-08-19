@@ -4,6 +4,10 @@ Revision history for Perl extension Carp::Always.
 
 0.10  xxx
         - fix typo in POD RT#68793 (also reported by Kai Moonbourn)
+        - Carp::Always ate part of errors like 'foo at bar' RT#57385
+          (fix borrowed from Carp::Always::Color)
+        - deal with non-string exceptions
+          (borrowed from Carp::Always:Color as well)
 
 0.09  Mon Jul 30 2007
         - no need for updating

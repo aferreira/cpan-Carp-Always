@@ -84,3 +84,24 @@ A::g();
 Can't use an undefined value as an ARRAY reference at test-block.pl line 1
 	A::f() called at test-block.pl line 2
 	A::g() called at test-block.pl line 3
+
+=== foo at bar
+
+--- perl
+die "foo at bar"
+
+--- stderr
+foo at bar at test-block.pl line 1
+
+=== exception objects
+
+--- perl
+
+package error;
+use overload '""' => sub { "Exception: " . shift->{error} . "\n" };
+
+package main;
+die bless { error => 'bad' }, error;
+
+--- stderr
+Exception: bad
