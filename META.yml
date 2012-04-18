@@ -1,29 +1,28 @@
---- #YAML:1.0
-name:               Carp-Always
-version:            0.10
-abstract:           Warns and dies noisily with stack backtraces
+---
+abstract: 'Warns and dies noisily with stack backtraces'
 author:
-    - Adriano R. Ferreira <ferreira@cpan.org>
-license:            perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+  - 'Adriano R. Ferreira <ferreira@cpan.org>'
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    Carp:        0
-    Test::More:  0
-resources:
-    repository:  http://github.com/aferreira/cpan-Carp-Always
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.57_05
+  Test::Base: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.113640'
+license: perl
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Carp-Always
+no_index:
+  directory:
+    - t
+    - inc
 recommends:
-    Test::Base:           0
-    Test::Pod:            0
-    Test::Pod::Coverage:  0
+  Test::Pod: 0
+  Test::Pod::Coverage: 0
+requires:
+  Carp: 0
+  Test::More: 0
+resources:
+  repository: http://github.com/aferreira/cpan-Carp-Always
+version: 0.11
