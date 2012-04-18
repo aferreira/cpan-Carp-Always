@@ -1,4 +1,4 @@
-Carp-Always version 0.09
+Carp-Always version 0.11
 ========================
 
 Carp::Always can be used to make a script complain loudly
@@ -37,7 +37,7 @@ but that is a core Perl module.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2005-2007 by Ferreira
+Copyright (C) 2005-2012 by Ferreira
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
