@@ -24,12 +24,16 @@ WriteMakefile(
                 # optional tests
                 'Test::Pod'        => 0,
                 'Test::Pod::Coverage' => 0,
-                'Test::Base'          => 0,
             },
             resources => {
                 repository => 'http://github.com/aferreira/cpan-Carp-Always',
             }
         },
-    ) :())
+    ) : ()),
+    ($EUMM_VERSION >= 6.5501 ? (
+        BUILD_REQUIRES => {
+            'Test::Base' => 0,   # gotta test the minimum
+        },
+    ) : ()),
 
 );
