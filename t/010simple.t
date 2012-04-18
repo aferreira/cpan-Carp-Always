@@ -9,6 +9,7 @@ BEGIN {
 }
 
 use Test::Base;
+use Carp;
 
 my $OUTFILE = 'test-block.pl';
 my $PERL5OPTS = '-Mblib -MCarp::Always';
@@ -27,7 +28,11 @@ sub Test::Base::Filter::exec_perl_stderr {
     return $output;
 }
 
-filters { perl => 'exec_perl_stderr' };
+sub fixup_stderr {
+    s/\.$//m if $Carp::VERSION < '1.25';
+}
+
+filters { perl => 'exec_perl_stderr', stderr => 'fixup_stderr' };
 run_is_deeply 'perl', 'stderr';
 
 __END__
@@ -53,7 +58,7 @@ package main;
 A::g();
 
 --- stderr
-Beware! at test-block.pl line 1
+Beware! at test-block.pl line 1.
 	A::f() called at test-block.pl line 2
 	A::g() called at test-block.pl line 3
 
@@ -81,7 +86,7 @@ package main;
 A::g();
 
 --- stderr
-Can't use an undefined value as an ARRAY reference at test-block.pl line 1
+Can't use an undefined value as an ARRAY reference at test-block.pl line 1.
 	A::f() called at test-block.pl line 2
 	A::g() called at test-block.pl line 3
 
@@ -91,7 +96,7 @@ Can't use an undefined value as an ARRAY reference at test-block.pl line 1
 die "foo at bar"
 
 --- stderr
-foo at bar at test-block.pl line 1
+foo at bar at test-block.pl line 1.
 
 === exception objects
 
