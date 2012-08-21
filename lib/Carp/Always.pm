@@ -5,7 +5,7 @@ use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 use Carp qw(verbose); # makes carp() cluck and croak() confess
 
@@ -42,6 +42,8 @@ END {
 
 1;
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
@@ -95,8 +97,8 @@ Nothing at all is exported.
 =head1 ACKNOWLEDGMENTS
 
 This module was born as a reaction to a release
-of L<Acme::JavaTrace> by Sébastien Aperghis-Tramoni.
-Sébastien also has a newer module called
+of L<Acme::JavaTrace> by SÃ©bastien Aperghis-Tramoni.
+SÃ©bastien also has a newer module called
 L<Devel::SimpleTrace> with the same code and fewer flame
 comments on docs. The pruning of the uselessly long
 docs of this module were prodded by Michael Schwern.
