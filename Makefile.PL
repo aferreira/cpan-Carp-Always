@@ -30,10 +30,4 @@ WriteMakefile(
             }
         },
     ) : ()),
-    ($EUMM_VERSION >= 6.5501 ? (
-        BUILD_REQUIRES => {
-            'Test::Base' => 0,   # gotta test the minimum
-        },
-    ) : ()),
-
 );

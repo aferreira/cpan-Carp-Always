@@ -1,45 +1,33 @@
 #perl -T 
+use strict;
+use warnings;
 
-BEGIN {
-    eval { require Test::Base };
-    if ($@) {
-        require Test::More;
-        Test::More::plan(skip_all => "Test::Base required for module tests");
-    }
-}
-
-use Test::Base;
+use Test::More tests => 4;
 use Carp;
 
 my $OUTFILE = 'test-block.pl';
-my $PERL5OPTS = '-Mblib -MCarp::Always';
+my @PERL5OPTS = ((map "-I$_", @INC), '-MCarp::Always');
 
-sub Test::Base::Filter::exec_perl_stderr {
-    my $self = shift;       # The Test::Base::Filter object
-    my $tmpfile = $OUTFILE;
-    $self->_write_to($tmpfile, @_);
-    open my $execution, "$^X $PERL5OPTS $OUTFILE 2>&1 |"
+sub is_output {
+    my ($code, $expected, $name) = @_;
+    $expected =~ s/\.$//m
+      if $Carp::VERSION < '1.25';
+
+    open my $fh, '>', $OUTFILE or die "can't write to $OUTFILE: $!";
+    print { $fh } $code;
+    close $fh;
+
+    open my $execution, join(' ', $^X, @PERL5OPTS, $OUTFILE) . ' 2>&1 |'
       or die "Couldn't open subprocess: $!\n";
-    local $/;
-    my $output = <$execution>;
+    my $output = do { local $/; <$execution> };
     close $execution;
-    unlink($tmpfile)
-      or die "Couldn't unlink $tmpfile: $!\n";
-    return $output;
+    unlink($OUTFILE)
+      or die "Couldn't unlink $OUTFILE: $!\n";
+
+    is $output, $expected, $name;
 }
 
-sub fixup_stderr {
-    s/\.$//m if $Carp::VERSION < '1.25';
-}
-
-filters { perl => 'exec_perl_stderr', stderr => 'fixup_stderr' };
-run_is_deeply 'perl', 'stderr';
-
-__END__
-
-=== basic test
---- perl
-
+is_output <<'END_CODE', <<'END_OUTPUT', 'basic test';
 package A;
 
 sub f {
@@ -49,23 +37,20 @@ sub f {
 
 sub g {
 #line 2
-	f();
+    f();
 }
 
 package main;
 
 #line 3
 A::g();
-
---- stderr
+END_CODE
 Beware! at test-block.pl line 1.
 	A::f() called at test-block.pl line 2
 	A::g() called at test-block.pl line 3
+END_OUTPUT
 
-=== interpreter-thrown warnings
-
---- perl
-
+is_output <<'END_CODE', <<'END_OUTPUT', 'interpreter-thrown warnings';
 package A;
 
 sub f {
@@ -85,22 +70,19 @@ package main;
 #line 3
 A::g();
 
---- stderr
+END_CODE
 Can't use an undefined value as an ARRAY reference at test-block.pl line 1.
 	A::f() called at test-block.pl line 2
 	A::g() called at test-block.pl line 3
+END_OUTPUT
 
-=== foo at bar
-
---- perl
+is_output <<'END_CODE', <<'END_OUTPUT', 'foo at bar';
 die "foo at bar"
-
---- stderr
+END_CODE
 foo at bar at test-block.pl line 1.
+END_OUTPUT
 
-=== exception objects
-
---- perl
+is_output <<'END_CODE', <<'END_OUTPUT', 'exception objects';
 
 package error;
 use overload '""' => sub { "Exception: " . shift->{error} . "\n" };
@@ -108,5 +90,7 @@ use overload '""' => sub { "Exception: " . shift->{error} . "\n" };
 package main;
 die bless { error => 'bad' }, error;
 
---- stderr
+END_CODE
 Exception: bad
+END_OUTPUT
+
