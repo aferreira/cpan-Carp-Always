@@ -22,8 +22,6 @@ WriteMakefile(
         META_MERGE => {
             recommends => {
                 # optional tests
-                'Test::Pod'        => 0,
-                'Test::Pod::Coverage' => 0,
                 'Test::Base'          => 0,
             },
             resources => {
