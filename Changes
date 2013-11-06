@@ -2,6 +2,11 @@ Revision history for Perl extension Carp::Always.
 
     $Id: Changes 1480 2007-07-30 14:35:04Z me $
 
+0.13  Wed Nov 6 2012
+        - Test::More and Test::Base go to TEST_REQUIRES
+        - Test::Pod and Test::Pod::Coverage as author tests
+          (solves RT#87423)
+
 0.12  Tue Aug 21 2012
         - fix failing t/pod.t due to bad encoding (CPAN #77656)
 
