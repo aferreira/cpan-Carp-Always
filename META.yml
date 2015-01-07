@@ -17,12 +17,16 @@ no_index:
   directory:
     - t
     - inc
+provides:
+  Carp::Always
 recommends:
   Test::Pod: 0
   Test::Pod::Coverage: 0
 requires:
   Carp: 0
   Test::More: 0
+  Perl: 5.006
 resources:
   repository: http://github.com/aferreira/cpan-Carp-Always
 version: 0.14
+
