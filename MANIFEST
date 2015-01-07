@@ -2,6 +2,7 @@ Changes
 Makefile.PL
 MANIFEST
 README
+LICENSE
 
 t/001use.t
 t/010simple.t
