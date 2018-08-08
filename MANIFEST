@@ -10,5 +10,3 @@ t/098pod-coverage.t
 t/099pod.t
 
 lib/Carp/Always.pm
-
-META.yml                                 Module meta-data (added by MakeMaker)
