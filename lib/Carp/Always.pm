@@ -114,25 +114,15 @@ but will stay there as a redirection to this module).
 
 =head1 SEE ALSO
 
-=over 4
-
-=item *
-
 L<Carp>
-
-=item *
 
 L<Acme::JavaTrace> and L<Devel::SimpleTrace>
 
-=item *
-
 L<Carp::Always::Color>
-
-=item *
 
 L<Carp::Source::Always>
 
-=back
+L<Devel::Confess>
 
 Please report bugs via GitHub
 https://github.com/aferreira/cpan-Carp-Always/issues

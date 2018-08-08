@@ -1,5 +1,6 @@
 Revision history for Perl extension Carp::Always.
 
+        - Add Devel::Confess to See Also (https://github.com/aferreira/cpan-Carp-Always/issues/7)
         - Change bugtracker to GitHub
 
 0.13_01  Wed Aug 8 2018   TRIAL RELEASE
