@@ -42,7 +42,6 @@ END {
 }
 
 1;
-__END__
 
 =encoding utf8
 
@@ -54,8 +53,7 @@ Carp::Always - Warns and dies noisily with stack backtraces
 
   use Carp::Always;
 
-makes every C<warn()> and C<die()> complains loudly in the calling package 
-and elsewhere. More often used on the command line:
+Often used on the command line:
 
   perl -MCarp::Always script.pl
 
@@ -81,15 +79,14 @@ looks:
           main::f('undef') called at -e line 2
           main::g() called at -e line 2
 
-In the implementation, the C<Carp> module does
+In the implementation, the L<Carp> module does
 the heavy work, through C<longmess()>. The
 actual implementation sets the signal hooks
 C<$SIG{__WARN__}> and C<$SIG{__DIE__}> to
 emit the stack backtraces.
 
-Oh, by the way, C<carp> and C<croak> when requiring/using
-the C<Carp> module are also made verbose, behaving
-like C<cluck> and C<confess>, respectively.
+Also, all uses of C<carp> and C<croak> are made verbose,
+behaving like C<cluck> and C<confess>.
 
 =head2 EXPORT
 
@@ -102,15 +99,12 @@ of L<Acme::JavaTrace> by Sébastien Aperghis-Tramoni.
 Sébastien also has a newer module called
 L<Devel::SimpleTrace> with the same code and fewer flame
 comments on docs. The pruning of the uselessly long
-docs of this module were prodded by Michael Schwern.
+docs of this module was prodded by Michael Schwern.
 
 Schwern and others told me "the module name stinked" -
 it was called C<Carp::Indeed>. After thinking long
-and not getting nowhere, I went with nuffin's suggestion
+and getting nowhere, I went with nuffin's suggestion
 and now it is called C<Carp::Always>. 
-C<Carp::Indeed> which is now deprecate
-lives in its own distribution (which won't go anywhere
-but will stay there as a redirection to this module).
 
 =head1 SEE ALSO
 
@@ -141,9 +135,9 @@ Test scripts are good. I should write more of these.
 =back
 
 Please report bugs via GitHub
-https://github.com/aferreira/cpan-Carp-Always/issues
+L<https://github.com/aferreira/cpan-Carp-Always/issues>
 
-Backlog in CPAN RT: https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always
+Backlog in CPAN RT: L<https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always>
 
 =head1 AUTHOR
 
