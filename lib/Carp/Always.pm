@@ -126,8 +126,6 @@ L<Devel::Confess>
 
 =head1 BUGS
 
-Every (un)deserving module has its own pet bugs.
-
 =over 4
 
 =item *
@@ -139,11 +137,6 @@ C<$SIG{'__DIE__'}>.
 =item *
 
 Test scripts are good. I should write more of these.
-
-=item *
-
-I don't know if this module name is still a bug as it was
-at the time of C<Carp::Indeed>.
 
 =back
 
