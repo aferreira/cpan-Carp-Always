@@ -124,9 +124,6 @@ L<Carp::Source::Always>
 
 L<Devel::Confess>
 
-Please report bugs via GitHub
-https://github.com/aferreira/cpan-Carp-Always/issues
-
 =head1 BUGS
 
 Every (un)deserving module has its own pet bugs.
@@ -149,6 +146,11 @@ I don't know if this module name is still a bug as it was
 at the time of C<Carp::Indeed>.
 
 =back
+
+Please report bugs via GitHub
+https://github.com/aferreira/cpan-Carp-Always/issues
+
+Backlog in CPAN RT: https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always
 
 =head1 AUTHOR
 
