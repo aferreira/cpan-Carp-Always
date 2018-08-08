@@ -38,6 +38,9 @@ WriteMakefile(
 ($EUMM_VERSION >= 6.31 ? (
     LICENSE       => 'perl',
 ) : ()),
+($EUMM_VERSION > 6.48 ? (
+    MIN_PERL_VERSION => 5.006,
+) : ()),
 ($EUMM_VERSION > 6.4501 ? (
     META_MERGE    => \%META,
 ) : ()),
