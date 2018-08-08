@@ -1,13 +1,5 @@
 #perl -T 
 
-BEGIN {
-    eval { require Test::Base };
-    if ($@) {
-        require Test::More;
-        Test::More::plan(skip_all => "Test::Base required for module tests");
-    }
-}
-
 use Test::Base;
 use Carp;
 
