@@ -21,6 +21,9 @@ my %META = (
             url  => 'git://github.com/aferreira/cpan-Carp-Always.git',
             web  => 'https://github.com/aferreira/cpan-Carp-Always'
         },
+        bugtracker => {
+            web => 'https://github.com/aferreira/cpan-Carp-Always/issues',
+        },
     },
 );
 

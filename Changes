@@ -1,5 +1,7 @@
 Revision history for Perl extension Carp::Always.
 
+        - Change bugtracker to GitHub
+
 0.13_01  Wed Aug 8 2018   TRIAL RELEASE
         - No code change
         - Fine-tuning of prereqs

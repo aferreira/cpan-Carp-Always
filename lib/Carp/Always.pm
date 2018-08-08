@@ -134,8 +134,8 @@ L<Carp::Source::Always>
 
 =back
 
-Please report bugs via CPAN RT 
-http://rt.cpan.org/NoAuth/Bugs.html?Dist=Carp-Always.
+Please report bugs via GitHub
+https://github.com/aferreira/cpan-Carp-Always/issues
 
 =head1 BUGS
 
