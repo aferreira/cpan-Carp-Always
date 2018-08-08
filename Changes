@@ -1,6 +1,12 @@
 Revision history for Perl extension Carp::Always.
 
-    $Id: Changes 1480 2007-07-30 14:35:04Z me $
+0.13_01  Wed Aug 8 2018   TRIAL RELEASE
+        - No code change
+        - Fine-tuning of prereqs
+
+        [thanks Shawn Carroll]
+        - Test::Pod and Test::Pod::Coverage as author tests again
+        - Added LICENSE file
 
 0.13  Wed Nov 6 2012
         - Test::More and Test::Base go to TEST_REQUIRES
