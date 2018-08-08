@@ -1,0 +1,5 @@
+
+-pbp -nst # Perl Best Practices
+-i=2      # Indentation is 2 columns
+-ci=2     # Continuation indentation is 2 columns
+-pt=2     # High parenthesis tightness
