@@ -8,7 +8,7 @@ use warnings;
 our $VERSION = '0.13_02';
 $VERSION =~ tr/_//d;
 
-use Carp qw(verbose); # makes carp() cluck and croak() confess
+use Carp qw(verbose);    # makes carp() cluck and croak() confess
 
 sub _warn {
   if ($_[-1] =~ /\n$/s) {
@@ -33,7 +33,8 @@ my %OLD_SIG;
 
 BEGIN {
   @OLD_SIG{qw(__DIE__ __WARN__)} = @SIG{qw(__DIE__ __WARN__)};
-  $SIG{__DIE__} = \&_die;
+
+  $SIG{__DIE__}  = \&_die;
   $SIG{__WARN__} = \&_warn;
 }
 
