@@ -1,5 +1,9 @@
 Revision history for Perl extension Carp::Always.
 
+0.14_05  Wed Aug 9 2018   TRIAL RELEASE
+
+        - Fix one test for the sake of Carp ≤ 1.25
+
 0.14_04  Wed Aug 9 2018   TRIAL RELEASE
 
         - [EXPERIMENTAL] Prepare for extensions
