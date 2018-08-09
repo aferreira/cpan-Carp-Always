@@ -1,5 +1,9 @@
 Revision history for Perl extension Carp::Always.
 
+0.14  Wed Aug 8 2018
+
+        - Promoted to stable release
+
 0.13_03  Wed Aug 8 2018   TRIAL RELEASE
 
         - t/010simple.t is a required test
