@@ -1,5 +1,10 @@
 Revision history for Perl extension Carp::Always.
 
+0.14_01  Wed Aug 9 2018
+
+        - Tighter regex to suppress " at FILE line LINE.\n" RT#96561
+        - Tests for edge cases of warn () and die ()
+
 0.14  Wed Aug 8 2018
 
         - Promoted to stable release

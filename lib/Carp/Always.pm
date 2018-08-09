@@ -5,7 +5,7 @@ use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '0.14';
+our $VERSION = '0.14_01';
 $VERSION =~ tr/_//d;
 
 use Carp qw(verbose);    # makes carp() cluck and croak() confess
