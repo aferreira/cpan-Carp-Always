@@ -97,6 +97,31 @@ behaving like C<cluck> and C<confess>.
 
 Nothing at all is exported.
 
+=head1 METHODS
+
+L<Carp::Always> implements the following methods.
+
+=head2 import
+
+  Carp::Always->import()
+
+Enables L<Carp::Always>. Also triggered by statements like
+
+  use Carp::Always;
+  use Carp::Always 0.14;
+
+but not by
+
+  use Carp::Always ();    # does not invoke import()
+
+=head2 unimport
+
+  Carp::Always->unimport();
+
+Disables L<Carp::Always>. Also triggered with
+
+  no Carp::Always;
+
 =head1 ACKNOWLEDGMENTS
 
 This module was born as a reaction to a release
