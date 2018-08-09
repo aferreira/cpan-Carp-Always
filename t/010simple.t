@@ -82,6 +82,40 @@ Can't use an undefined value as an ARRAY reference at test-block.pl line 1.
 	A::f() called at test-block.pl line 2
 	A::g() called at test-block.pl line 3
 
+=== warn ()
+
+--- perl
+warn
+
+--- stderr
+Warning: something's wrong at test-block.pl line 1.
+
+=== die ()
+
+--- perl
+die
+
+--- stderr
+Died at test-block.pl line 1.
+
+=== $@ = EXCEPTION; warn ()
+
+--- perl
+local $@ = 'EXCEPTION';
+warn
+
+--- stderr
+EXCEPTION	...caught at test-block.pl line 2.
+
+=== $@ = EXCEPTION; die ()
+
+--- perl
+local $@ = 'EXCEPTION';
+die
+
+--- stderr
+EXCEPTION	...propagated at test-block.pl line 2.
+
 === foo at bar
 
 --- perl
