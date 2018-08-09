@@ -1,5 +1,10 @@
 Revision history for Perl extension Carp::Always.
 
+0.14_04  Wed Aug 9 2018   TRIAL RELEASE
+
+        - [EXPERIMENTAL] Prepare for extensions
+        - Fix switching off and on
+
 0.14_03  Wed Aug 9 2018   TRIAL RELEASE
 
         - Document import() and unimport()
