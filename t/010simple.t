@@ -129,12 +129,12 @@ foo at bar at test-block.pl line 1.
 --- perl
 die "Kaboom at foo/bar.pl line 123
 Some additional diagnostics added here by
-a custom error handler.\n"
+a custom error handler\n"
 
 --- stderr
 Kaboom at foo/bar.pl line 123
 Some additional diagnostics added here by
-a custom error handler.
+a custom error handler
  at test-block.pl line 1.
 
 === exception objects
