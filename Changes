@@ -1,5 +1,10 @@
 Revision history for Perl extension Carp::Always.
 
+0.14_03  Wed Aug 9 2018   TRIAL RELEASE
+
+        - Document import() and unimport()
+        - Internal refactoring: Carp::Always::_longmess()
+
 0.14_02  Wed Aug 9 2018   TRIAL RELEASE
 
         [BREAKING CHANGES]
