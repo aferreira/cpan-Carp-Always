@@ -15,10 +15,7 @@ BEGIN {
 
 sub _warn { warn &_longmess }
 
-sub _die {
-  die @_ if ref $_[0];
-  die &_longmess;
-}
+sub _die { die ref $_[0] ? @_ : &_longmess }
 
 sub _longmess {
   if ($_[-1] =~ /\n\z/) {
