@@ -149,3 +149,30 @@ die bless { error => 'bad' }, error;
 
 --- stderr
 Exception: bad
+
+=== Carp::carp
+
+--- perl
+use Carp;
+carp 'foo';
+
+--- stderr
+foo at test-block.pl line 2.
+
+=== Carp::croak
+
+--- perl
+use Carp;
+croak 'foo';
+
+--- stderr
+foo at test-block.pl line 2.
+
+=== no Carp::Always
+
+--- perl
+no Carp::Always;
+warn "foo\n";
+
+--- stderr
+foo
