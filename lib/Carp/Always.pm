@@ -29,22 +29,22 @@ sub _longmess {
   &Carp::longmess;
 }
 
+my @HOOKS = qw(__DIE__ __WARN__);
 my %OLD_SIG;
 
 sub import {
   my $class = shift;
   return if $OLD_SIG{$class};
-  @{ $OLD_SIG{$class} }{qw(__DIE__ __WARN__)} = @SIG{qw(__DIE__ __WARN__)};
+  @{ $OLD_SIG{$class} }{@HOOKS} = @SIG{@HOOKS};
 
-  $SIG{__DIE__}  = $class->can('_die');
-  $SIG{__WARN__} = $class->can('_warn');
-  $Carp::Verbose = 'verbose';              # makes carp() cluck and croak() confess
+  @SIG{@HOOKS} = ($class->can('_die'), $class->can('_warn'));
+  $Carp::Verbose = 'verbose';    # makes carp() cluck and croak() confess
 }
 
 sub unimport {
   my $class = shift;
   return unless $OLD_SIG{$class};
-  @SIG{qw(__DIE__ __WARN__)} = @{ delete $OLD_SIG{$class} }{qw(__DIE__ __WARN__)};
+  @SIG{@HOOKS} = @{ delete $OLD_SIG{$class} }{@HOOKS};
   undef $Carp::Verbose;
 }
 
