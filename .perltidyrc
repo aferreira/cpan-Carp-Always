@@ -3,3 +3,4 @@
 -i=2      # Indentation is 2 columns
 -ci=2     # Continuation indentation is 2 columns
 -pt=2     # High parenthesis tightness
+-l=98     # Max line width is 98 cols
