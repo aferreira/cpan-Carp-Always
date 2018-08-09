@@ -90,6 +90,19 @@ die "foo at bar"
 --- stderr
 foo at bar at test-block.pl line 1.
 
+=== Kaboom + diagnostics RT#96561
+
+--- perl
+die "Kaboom at foo/bar.pl line 123
+Some additional diagnostics added here by
+a custom error handler.\n"
+
+--- stderr
+Kaboom at foo/bar.pl line 123
+Some additional diagnostics added here by
+a custom error handler.
+ at test-block.pl line 1.
+
 === exception objects
 
 --- perl

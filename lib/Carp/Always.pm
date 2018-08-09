@@ -11,19 +11,19 @@ $VERSION =~ tr/_//d;
 use Carp qw(verbose);    # makes carp() cluck and croak() confess
 
 sub _warn {
-  if ($_[-1] =~ /\n$/s) {
+  if ($_[-1] =~ /\n\z/) {
     my $arg = pop @_;
-    $arg =~ s/(.*)( at .*? line .*?\n$)/$1/s;
+    $arg =~ s/(.*) at [^\n]*? line [0-9]+\.?\n$/$1/s;
     push @_, $arg;
   }
   warn &Carp::longmess;
 }
 
 sub _die {
-  die @_ if ref($_[0]);
-  if ($_[-1] =~ /\n$/s) {
+  die @_ if ref $_[0];
+  if ($_[-1] =~ /\n\z/) {
     my $arg = pop @_;
-    $arg =~ s/(.*)( at .*? line .*?\n$)/$1/s;
+    $arg =~ s/(.*) at [^\n]*? line [0-9]+\.?\n$/$1/s;
     push @_, $arg;
   }
   die &Carp::longmess;
