@@ -32,17 +32,19 @@ sub _longmess {
 my %OLD_SIG;
 
 sub import {
-  return if %OLD_SIG;
-  @OLD_SIG{qw(__DIE__ __WARN__)} = @SIG{qw(__DIE__ __WARN__)};
+  my $class = shift;
+  return if $OLD_SIG{$class};
+  @{ $OLD_SIG{$class} }{qw(__DIE__ __WARN__)} = @SIG{qw(__DIE__ __WARN__)};
 
-  $SIG{__DIE__}  = \&_die;
-  $SIG{__WARN__} = \&_warn;
-  $Carp::Verbose = 'verbose';    # makes carp() cluck and croak() confess
+  $SIG{__DIE__}  = $class->can('_die');
+  $SIG{__WARN__} = $class->can('_warn');
+  $Carp::Verbose = 'verbose';              # makes carp() cluck and croak() confess
 }
 
 sub unimport {
-  return unless %OLD_SIG;
-  @SIG{qw(__DIE__ __WARN__)} = delete @OLD_SIG{qw(__DIE__ __WARN__)};
+  my $class = shift;
+  return unless $OLD_SIG{$class};
+  @SIG{qw(__DIE__ __WARN__)} = @{ delete $OLD_SIG{$class} }{qw(__DIE__ __WARN__)};
   undef $Carp::Verbose;
 }
 
