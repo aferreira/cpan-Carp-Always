@@ -86,7 +86,7 @@ looks:
 In the implementation, the L<Carp> module does
 the heavy work, through C<longmess()>. The
 actual implementation sets the signal hooks
-C<$SIG{__WARN__}> and C<$SIG{__DIE__}> to
+L<$SIG{__WARN__}|perlvar/%SIG> and L<$SIG{__DIE__}|perlvar/%SIG> to
 emit the stack backtraces.
 
 Also, all uses of C<carp> and C<croak> are made verbose,
