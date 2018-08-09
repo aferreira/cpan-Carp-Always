@@ -126,8 +126,8 @@ L<Devel::Confess>
 =item *
 
 This module does not play well with other modules which fusses
-around with C<warn>, C<die>, C<$SIG{'__WARN__'}>,
-C<$SIG{'__DIE__'}>.
+around with C<warn>, C<die>, C<$SIG{__WARN__}>,
+C<$SIG{__DIE__}>.
 
 =item *
 
