@@ -93,10 +93,6 @@ emit the stack backtraces.
 Also, all uses of C<carp> and C<croak> are made verbose,
 behaving like C<cluck> and C<confess>.
 
-=head2 EXPORT
-
-Nothing at all is exported.
-
 =head1 METHODS
 
 L<Carp::Always> implements the following methods.
