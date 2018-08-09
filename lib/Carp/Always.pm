@@ -42,7 +42,7 @@ sub import {
 
 sub unimport {
   return unless %OLD_SIG;
-  @SIG{qw(__DIE__ __WARN__)} = @OLD_SIG{qw(__DIE__ __WARN__)};
+  @SIG{qw(__DIE__ __WARN__)} = delete @OLD_SIG{qw(__DIE__ __WARN__)};
   undef $Carp::Verbose;
 }
 

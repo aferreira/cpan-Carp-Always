@@ -176,3 +176,16 @@ warn "foo\n";
 
 --- stderr
 foo
+
+=== no Carp::Always; use Carp::Always;
+
+--- perl
+Carp::Always->unimport;
+warn "foo\n";
+Carp::Always->import;
+warn "foo\n";
+
+--- stderr
+foo
+foo
+ at test-block.pl line 4.
