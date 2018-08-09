@@ -8,7 +8,7 @@ use warnings;
 our $VERSION = '0.14_01';
 $VERSION =~ tr/_//d;
 
-use Carp qw(verbose);    # makes carp() cluck and croak() confess
+use Carp ();
 
 sub _warn {
   if ($_[-1] =~ /\n\z/) {
@@ -31,15 +31,19 @@ sub _die {
 
 my %OLD_SIG;
 
-BEGIN {
+sub import {
+  return if %OLD_SIG;
   @OLD_SIG{qw(__DIE__ __WARN__)} = @SIG{qw(__DIE__ __WARN__)};
 
   $SIG{__DIE__}  = \&_die;
   $SIG{__WARN__} = \&_warn;
+  $Carp::Verbose = 'verbose';    # makes carp() cluck and croak() confess
 }
 
-END {
+sub unimport {
+  return unless %OLD_SIG;
   @SIG{qw(__DIE__ __WARN__)} = @OLD_SIG{qw(__DIE__ __WARN__)};
+  undef $Carp::Verbose;
 }
 
 1;

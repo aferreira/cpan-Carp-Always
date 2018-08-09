@@ -1,6 +1,15 @@
 Revision history for Perl extension Carp::Always.
 
-0.14_01  Wed Aug 9 2018
+0.14_02  Wed Aug 9 2018   TRIAL RELEASE
+
+        [BREAKING CHANGES]
+        - Carp::Always enabling via import() -
+          that means "use Carp::Always" works, but not "use Carp::Always ()"
+        - Carp::Always disabling via unimport() -
+          That means disabling can be done with "no Carp::Always"
+        - Carp::Always doesn't use BEGIN and END blocks anymore
+
+0.14_01  Wed Aug 9 2018   TRIAL RELEASE
 
         - Tighter regex to suppress " at FILE line LINE.\n" RT#96561
         - Tests for edge cases of warn () and die ()
