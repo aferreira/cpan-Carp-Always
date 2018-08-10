@@ -1,29 +1,37 @@
 Revision history for Perl extension Carp::Always.
 
-0.15_01  Wed Aug 9 2018   TRIAL RELEASE
+0.15_02  Fri Aug 10 2018   TRIAL RELEASE
+
+        [Compatibility fixes]
+        - Disable bogus warnings on perl ≤ 5.8.8
+        - Restore compatibility with Carp < 1.25
+
+0.15_01  Fri Aug 10 2018   TRIAL RELEASE
 
         - Fix long standing bug with duplicate tracebacks
           (when carp / croak / cluck / confess were used) RT#123354
+        - Fix long standing bug when message ended at " at WHATEVER"
+          RT#96561 GH#2
 
-0.15  Wed Aug 9 2018
+0.15  Thu Aug 9 2018
 
         - Promoted to stable release
 
-0.14_05  Wed Aug 9 2018   TRIAL RELEASE
+0.14_05  Thu Aug 9 2018   TRIAL RELEASE
 
         - Fix one test for the sake of Carp ≤ 1.25
 
-0.14_04  Wed Aug 9 2018   TRIAL RELEASE
+0.14_04  Thu Aug 9 2018   TRIAL RELEASE
 
         - [EXPERIMENTAL] Prepare for extensions
         - Fix switching off and on
 
-0.14_03  Wed Aug 9 2018   TRIAL RELEASE
+0.14_03  Thu Aug 9 2018   TRIAL RELEASE
 
         - Document import() and unimport()
         - Internal refactoring: Carp::Always::_longmess()
 
-0.14_02  Wed Aug 9 2018   TRIAL RELEASE
+0.14_02  Thu Aug 9 2018   TRIAL RELEASE
 
         [BREAKING CHANGES]
         - Carp::Always enabling via import() -
@@ -32,7 +40,7 @@ Revision history for Perl extension Carp::Always.
           That means disabling can be done with "no Carp::Always"
         - Carp::Always doesn't use BEGIN and END blocks anymore
 
-0.14_01  Wed Aug 9 2018   TRIAL RELEASE
+0.14_01  Thu Aug 9 2018   TRIAL RELEASE
 
         - Tighter regex to suppress " at FILE line LINE.\n" RT#96561
         - Tests for edge cases of warn () and die ()
@@ -67,7 +75,7 @@ Revision history for Perl extension Carp::Always.
           (solves RT#87423)
 
 0.12  Tue Aug 21 2012
-        - fix failing t/pod.t due to bad encoding (CPAN #77656)
+        - fix failing t/pod.t due to bad encoding (RT#77656)
 
 0.11  Wed Apr 18 2011
         - fix test failure with Carp 1.25+ RT#75320 [thanks ANDK and greeneg]

@@ -5,7 +5,7 @@ use 5.006;
 use strict;
 use warnings;
 
-our $VERSION = '0.15_01';
+our $VERSION = '0.15_02';
 $VERSION =~ tr/_//d;
 
 BEGIN {
