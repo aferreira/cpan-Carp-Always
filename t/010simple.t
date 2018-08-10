@@ -189,3 +189,66 @@ warn "foo\n";
 foo
 foo
  at test-block.pl line 4.
+
+=== nested Carp::Carp
+
+--- perl
+
+package A;
+use Carp 'carp';
+
+sub f {
+#line 1
+    carp "Beware!";
+}
+
+sub g {
+#line 2
+	f();
+}
+
+package main;
+
+#line 3
+A::g();
+
+--- stderr
+Beware! at test-block.pl line 1.
+	A::f() called at test-block.pl line 2
+	A::g() called at test-block.pl line 3
+
+=== Preserve non-repeated "at FILE line LINE" GH#8
+
+--- perl
+die "haha at /Where/isit.t line 4545.\n"
+
+--- stderr
+haha at /Where/isit.t line 4545.
+ at test-block.pl line 1.
+
+=== Carp::confess RT#123354
+
+--- perl
+
+package A;
+use Carp 'confess';
+
+sub f {
+#line 1
+    confess "Beware!";
+}
+
+sub g {
+#line 2
+	f();
+}
+
+package main;
+
+#line 3
+A::g();
+
+--- stderr
+Beware! at test-block.pl line 1.
+	A::f() called at test-block.pl line 2
+	A::g() called at test-block.pl line 3

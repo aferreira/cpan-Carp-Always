@@ -18,12 +18,9 @@ sub _warn { warn &_longmess }
 sub _die { die ref $_[0] ? @_ : &_longmess }
 
 sub _longmess {
-  if ($_[-1] =~ /\n\z/) {
-    my $arg = pop @_;
-    $arg =~ s/(.*) at [^\n]*? line [0-9]+\.?\n$/$1/s;
-    push @_, $arg;
-  }
-  &Carp::longmess;
+  my $mess = &Carp::longmess;
+  $mess =~ s/( at .*?\n)\1/$1/s;    # Suppress duplicate tracebacks
+  $mess;
 }
 
 my @HOOKS = qw(__DIE__ __WARN__);
