@@ -38,6 +38,7 @@ sub import {
 sub unimport {
   my $class = shift;
   return unless $OLD_SIG{$class};
+  no if "$]" <= 5.008008, 'warnings' => 'uninitialized';
   (@SIG{@HOOKS}, $Carp::Verbose) = @{ delete $OLD_SIG{$class} }{ @HOOKS, 'Verbose' };
 }
 
