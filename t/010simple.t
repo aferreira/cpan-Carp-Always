@@ -21,7 +21,7 @@ sub Test::Base::Filter::exec_perl_stderr {
 }
 
 sub fixup_stderr {
-    s/\.$//m if $Carp::VERSION < '1.25';
+    s/\.$//mg if $Carp::VERSION < '1.25';
 }
 
 filters { perl => 'exec_perl_stderr', stderr => 'fixup_stderr' };

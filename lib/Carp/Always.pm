@@ -13,11 +13,18 @@ BEGIN {
   $Carp::CarpInternal{ +__PACKAGE__ }++;
 }
 
+use constant CHOMP_DOT => $Carp::VERSION < 1.25;
+
 sub _warn { warn &_longmess }
 
 sub _die { die ref $_[0] ? @_ : &_longmess }
 
 sub _longmess {
+  if (CHOMP_DOT && $_[-1] =~ /\.\n\z/) {
+    my $arg = pop @_;
+    $arg =~ s/\.\n\z/\n/;
+    push @_, $arg;
+  }
   my $mess = &Carp::longmess;
   $mess =~ s/( at .*?\n)\1/$1/s;    # Suppress duplicate tracebacks
   $mess;
