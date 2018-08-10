@@ -32,7 +32,7 @@ my %OLD_SIG;
 sub import {
   my $class = shift;
   return if $OLD_SIG{$class};
-  @{ $OLD_SIG{$class} }{@HOOKS} = @SIG{@HOOKS};
+  @{ $OLD_SIG{$class} }{ @HOOKS, 'Verbose' } = (@SIG{@HOOKS}, $Carp::Verbose);
 
   @SIG{@HOOKS} = ($class->can('_die'), $class->can('_warn'));
   $Carp::Verbose = 'verbose';    # makes carp() cluck and croak() confess
@@ -41,8 +41,7 @@ sub import {
 sub unimport {
   my $class = shift;
   return unless $OLD_SIG{$class};
-  @SIG{@HOOKS} = @{ delete $OLD_SIG{$class} }{@HOOKS};
-  undef $Carp::Verbose;
+  (@SIG{@HOOKS}, $Carp::Verbose) = @{ delete $OLD_SIG{$class} }{ @HOOKS, 'Verbose' };
 }
 
 1;
