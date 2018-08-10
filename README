@@ -13,9 +13,8 @@ with stack backtrace. With a few lines of codes, this module
 illustrates how to make warn() and die() noisy as well.
 
 This module was written as a reaction to Acme::JavaTrace by
-Sébastien Aperghis-Tramoni. I didn't know Sébastien or
-or understood his humor at the time. That and more was
-pointed by Robert Rothenberg at CPAN ratings. But the module
+Sébastien Aperghis-Tramoni. At the time I didn't know Sébastien or
+or understood his humor. But the module
 idea stood and lives to help you out with debugging your code.
 
 INSTALLATION
@@ -37,7 +36,7 @@ but that is a core Perl module.
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2005-2013 by Ferreira
+Copyright (C) 2005-2013, 2018 by Adriano Ferreira
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

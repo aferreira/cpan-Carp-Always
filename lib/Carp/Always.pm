@@ -175,7 +175,7 @@ Adriano Ferreira, E<lt>ferreira@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2005-2013 by Adriano R. Ferreira
+Copyright (C) 2005-2013, 2018 by Adriano Ferreira
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
