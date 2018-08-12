@@ -167,8 +167,6 @@ Test scripts are good. I should write more of these.
 Please report bugs via GitHub
 L<https://github.com/aferreira/cpan-Carp-Always/issues>
 
-Backlog in CPAN RT: L<https://rt.cpan.org/Public/Dist/Display.html?Name=Carp-Always>
-
 =head1 AUTHOR
 
 Adriano Ferreira, E<lt>ferreira@cpan.orgE<gt>
