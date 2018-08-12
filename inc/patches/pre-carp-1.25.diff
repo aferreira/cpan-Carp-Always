@@ -1,0 +1,31 @@
+diff --git a/lib/Carp/Always.pm b/lib/Carp/Always.pm
+index 9d996d8..9d5b3f9 100644
+--- a/lib/Carp/Always.pm
++++ b/lib/Carp/Always.pm
+@@ -7,18 +7,25 @@ use warnings;
+ 
+ our $VERSION = '0.16';
+ $VERSION =~ tr/_//d;
++our @VERSION_TAGS = qw(patch:pre-carp-1.25);
+ 
+ BEGIN {
+   require Carp;
+-  Carp->VERSION('1.25');
+   $Carp::CarpInternal{ +__PACKAGE__ }++;
+ }
+ 
++use constant CHOMP_DOT => $Carp::VERSION < 1.25;
++
+ sub _warn { warn &_longmess }
+ 
+ sub _die { die ref $_[0] ? @_ : &_longmess }
+ 
+ sub _longmess {
++  if (CHOMP_DOT && $_[-1] =~ /\.\n\z/) {
++    my $arg = pop @_;
++    $arg =~ s/\.\n\z/\n/;
++    push @_, $arg;
++  }
+   my $mess = &Carp::longmess;
+   $mess =~ s/( at .*?\n)\1/$1/s;    # Suppress duplicate tracebacks
+   $mess;

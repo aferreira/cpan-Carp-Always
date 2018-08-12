@@ -1,0 +1,27 @@
+diff --git a/lib/Carp/Always.pm b/lib/Carp/Always.pm
+index 9d996d8..382b623 100644
+--- a/lib/Carp/Always.pm
++++ b/lib/Carp/Always.pm
+@@ -1,12 +1,13 @@
+ 
+ package Carp::Always;
+ 
+-use 5.008009;
++use 5.006;
+ use strict;
+ use warnings;
+ 
+ our $VERSION = '0.16';
+ $VERSION =~ tr/_//d;
++our @VERSION_TAGS = qw(patch:pre-5.8.9);
+ 
+ BEGIN {
+   require Carp;
+@@ -39,6 +40,7 @@ sub import {
+ sub unimport {
+   my $class = shift;
+   return unless $OLD_SIG{$class};
++  no if "$]" <= 5.008008, 'warnings' => 'uninitialized';
+   (@SIG{@HOOKS}, $Carp::Verbose) = @{ delete $OLD_SIG{$class} }{ @HOOKS, 'Verbose' };
+ }
+ 
