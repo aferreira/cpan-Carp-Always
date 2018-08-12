@@ -1,7 +1,7 @@
 
 package Carp::Always;
 
-use 5.006;
+use 5.008009;
 use strict;
 use warnings;
 
@@ -10,21 +10,15 @@ $VERSION =~ tr/_//d;
 
 BEGIN {
   require Carp;
+  Carp->VERSION('1.25');
   $Carp::CarpInternal{ +__PACKAGE__ }++;
 }
-
-use constant CHOMP_DOT => $Carp::VERSION < 1.25;
 
 sub _warn { warn &_longmess }
 
 sub _die { die ref $_[0] ? @_ : &_longmess }
 
 sub _longmess {
-  if (CHOMP_DOT && $_[-1] =~ /\.\n\z/) {
-    my $arg = pop @_;
-    $arg =~ s/\.\n\z/\n/;
-    push @_, $arg;
-  }
   my $mess = &Carp::longmess;
   $mess =~ s/( at .*?\n)\1/$1/s;    # Suppress duplicate tracebacks
   $mess;
@@ -45,7 +39,6 @@ sub import {
 sub unimport {
   my $class = shift;
   return unless $OLD_SIG{$class};
-  no if "$]" <= 5.008008, 'warnings' => 'uninitialized';
   (@SIG{@HOOKS}, $Carp::Verbose) = @{ delete $OLD_SIG{$class} }{ @HOOKS, 'Verbose' };
 }
 
